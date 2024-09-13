@@ -239,4 +239,6 @@ If everything is working correctly, you should see the message returned by the b
 }
 
 ```
+![Nginx UI](Images/Nginx-reverse-proxy-ui.png)
+
 This verifies that NGINX is correctly proxying the /api requests to the backend service running on port 5000.
