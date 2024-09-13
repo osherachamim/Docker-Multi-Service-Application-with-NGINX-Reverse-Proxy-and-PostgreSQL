@@ -226,3 +226,17 @@ volumes:
 sudo docker-compose up --build
 ```
 2. he frontend should now be accessible at `http://localhost:8081`, and the backend should respond at `/api`on the same port through the reverse proxy.
+
+## Step 7: Test NGINX Reverse Proxy
+To test that the NGINX reverse proxy is properly forwarding requests from the frontend to the backend, visit the following URL:
+```bash
+http://localhost:8081/api
+```
+If everything is working correctly, you should see the message returned by the backend:
+```bash
+{
+  "message": "Hello from the backend!"
+}
+
+```
+This verifies that NGINX is correctly proxying the /api requests to the backend service running on port 5000.
