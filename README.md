@@ -15,7 +15,6 @@ This project demonstrates a multi-service Docker-based application with NGINX as
 │   ├── Dockerfile
 │   ├── package.json
 │   └── server.js
-├── database
 ├── frontend
 ├── Dockerfile
 │   ├── dist
