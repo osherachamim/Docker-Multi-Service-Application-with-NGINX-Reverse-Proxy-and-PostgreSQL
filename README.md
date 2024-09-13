@@ -17,12 +17,11 @@ This project demonstrates a multi-service Docker-based application with NGINX as
 │   └── server.js
 ├── database
 ├── frontend
+├── Dockerfile
 │   ├── dist
 │   │   └── index.html
 │   ├── nginx
 │   │   ├── default.conf
-│   │   ├── Dockerfile
-│   │   └── nginx.conf
 └── docker-compose.yml
 ```
 
@@ -56,17 +55,14 @@ This project demonstrates a multi-service Docker-based application with NGINX as
 
 1. In the **frontend** directory, create a `Dockerfile` for NGINX:
     ```dockerfile
-    # Use an official NGINX image as a base
-    FROM nginx:alpine
+      # Use the official NGINX image
+      FROM nginx:alpine
 
-    # Copy your static files (HTML, CSS, JS) into NGINX’s root directory
-    COPY ./dist/ /usr/share/nginx/html
+      # Copy the NGINX server configuration
+      COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
-    # Copy your NGINX configuration file for reverse proxying
-    COPY nginx.conf /etc/nginx/nginx.conf
-
-    # Expose port 80 to serve the frontend
-    EXPOSE 80
+      # Copy static HTML files (if any)
+      COPY ./dist/ /usr/share/nginx/html
     ```
 
 2. Create a simple HTML file in `frontend/dist/index.html`:
@@ -82,7 +78,7 @@ This project demonstrates a multi-service Docker-based application with NGINX as
     </html>
     ```
 
-3. Create an NGINX config file in `frontend/nginx.conf`:
+3. Create an NGINX config file in `frontend/nginx/default.conf`:
     ```nginx
     server {
       listen 80;
